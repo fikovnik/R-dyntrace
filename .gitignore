@@ -651,3 +651,6 @@ tests/tools.Rcheck/
 tests/utf8-regex.Rout
 tests/utils.Rcheck/
 tests/ver20.Rd
+/.cache/
+/compile_commands.json
+.gdb_history
