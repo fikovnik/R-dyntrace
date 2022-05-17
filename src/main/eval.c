@@ -3916,11 +3916,11 @@ int DispatchGroup(const char* group, SEXP call, SEXP op, SEXP args, SEXP rho,
     }
 
     DYNTRACE_PROBE_S3_GENERIC_ENTRY(generic, op, obj);
-    DYNTRACE_PROBE_S3_DISPATCH_ENTRY(generic, lclass, op, lmeth, s);
+    DYNTRACE_PROBE_S3_DISPATCH_ENTRY(generic, STRING_ELT(lclass, lwhich), op, lmeth, s);
 
     *ans = applyClosure(t, lsxp, s, rho, newvars, DYNTRACE_DISPATCH_S3);
 
-    DYNTRACE_PROBE_S3_DISPATCH_EXIT(generic, lclass, op, lmeth, s, *ans);
+    DYNTRACE_PROBE_S3_DISPATCH_EXIT(generic, STRING_ELT(lclass, lwhich), op, lmeth, s, *ans);
     DYNTRACE_PROBE_S3_GENERIC_EXIT(generic, op, obj, *ans);
 #ifdef ADJUST_ENVIR_REFCNTS
     unpromiseArgs(s);
